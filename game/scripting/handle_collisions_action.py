@@ -17,6 +17,7 @@ class HandleCollisionsAction(Action):
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
+        self._wait_frame = 0
 
     def execute(self, cast, script):
         """Executes the handle collisions action.
@@ -42,6 +43,12 @@ class HandleCollisionsAction(Action):
         snake2 = cast.get_second_actor("snakes")
         head1 = snake1.get_head()
         head2 = snake2.get_head()
+        self._wait_frame += 1
+        if self._wait_frame == 15:
+            snake1.grow_tail(1)
+            snake2.grow_tail(2)
+            self._wait_frame = 0
+
 
         if head1.get_position().equals(food.get_position()):
             points = food.get_points()
