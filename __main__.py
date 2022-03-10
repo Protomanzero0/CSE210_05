@@ -1,5 +1,4 @@
 import constants
-
 from game.casting.cast import Cast
 from game.casting.food import Food
 from game.casting.score import Score
@@ -31,6 +30,7 @@ def main():
     video_service = VideoService()
 
     script = Script()
+    script.add_action("input", ControlActorsAction(keyboard_service))
     script.add_action("input", ControlActorsAction(keyboard_service))
     script.add_action("update", MoveActorsAction())
     script.add_action("update", HandleCollisionsAction())
