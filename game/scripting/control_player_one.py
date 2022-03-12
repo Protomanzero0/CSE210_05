@@ -1,15 +1,9 @@
 import constants
-from game.casting.cycle1 import Cycle1
 from game.scripting.action import Action
-from game.shared.point import Point
-from game.scripting.control_actors_action import ControlActorsAction
 
-
-
-class ControlPlayer1(Action): 
+class ControlPlayerOne(Action): 
 
     def __init__(self, keyboard_service):
-        super.__init__()
         self._keyboard_service = keyboard_service
         self._direction = constants.RIGHT
 
@@ -31,6 +25,4 @@ class ControlPlayer1(Action):
             self._direction = constants.DOWN
         
         cycle1 = cast.get_first_actor("snakes")
-        cycle2 = cast.get_second_actor("snakes")
         cycle1.turn_head(self._direction)
-        cycle2.turn_head(self._direction)

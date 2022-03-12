@@ -6,8 +6,8 @@ from game.shared.color import Color
 
 class Cycle2(Snake):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, head_color, tail_color):
+        super().__init__(head_color, tail_color)
         self._segments = []
         self._prepare_body()
 
@@ -18,14 +18,12 @@ class Cycle2(Snake):
         for i in range(constants.SNAKE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "8" if i == 0 else "#"
-            color = Color(186, 53, 35)if i == 0 else Color(224, 90, 56)
-            
+            text = "8" if i == 0 else "#"            
             segment = Actor()
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text(text)
-            segment.set_color(color)
+            segment.set_color(self._head_color)
             self._segments.append(segment)
 
 
